@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+      <link rel="stylesheet" href="http://election2012.npr.org/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="http://election2012.npr.org/bootstrap/css/bootstrap-responsive.css">
+      <title>{% block title %}{% endblock %}</title>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .brand img {
+        position:absolute;
+        height:30px;
+        margin-top:-5px;
+      }
+    </style>
+    <script type="text/javascript" src="http://election2012.npr.org/js/lib/jquery-1.8.1.min.js"></script>
+      {% block extra_head %}
+      {% endblock %}
+  </head>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+          </a>
+          <span class="brand"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" /> BigBoard</span>
+          <span class="brand">Live Blog</span>
+<!--           <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://cron.nprapps.org/races/president/">President</a></li>
+                  <li><a href="http://cron.nprapps.org/races/president/featured/">President: Swing states</a></li>
+                  <li><a href="http://cron.nprapps.org/races/senate/">Senate</a></li>
+                  <li><a href="http://cron.nprapps.org/races/house/">House</a></li>
+                  <li><a href="http://cron.nprapps.org/races/house/featured/">House: Featured districts</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">WWW <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://elections2012.npr.org/bigboard/president.html" target="_blank">President</a></li>
+                  <li><a href="http://elections2012.npr.org/bigboard/senate.html" target="_blank">Senate</a></li>
+                  <li><a href="http://elections2012.npr.org/bigboard/house.html" target="_blank">House</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Time machine <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://cron.nprapps.org/timemachine/">Dashboard</a></li>
+                  <li><a href="http://cron.nprapps.org/timemachine/US.txt">US.txt</a></li>
+                  <li><a href="http://cron.nprapps.org/timemachine/ME_D.txt">ME_D.txt</a></li>
+                  <li><a href="http://cron.nprapps.org/timemachine/NE_D.txt">NE_D.txt</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div> --><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div id="content" class="span12">
+                {% block content %}{% endblock %}
+            </div>
+        <div>
+    </div>
+
+    <script type="text/javascript" src="http://election2012.npr.org/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://election2012.npr.org/js/lib/underscore-min.js"></script>
+    {% block extra_foot %}
+    {% endblock %}
+  </body>
+</html>

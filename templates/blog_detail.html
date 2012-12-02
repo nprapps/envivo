@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Live Blogs{% endblock %}
+{% block extra_head %}
+    <style type='text/css'>
+        #update-button { margin-top:15px;display:block; }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span12">
+        <h1>{{ blog.name }}</h1>
+        <p>{{ blog.description }}</p>
+        <h4>Updates</h4>
+        <ul id="update-list">{% for update in blog.updates_sorted %}
+            <li><strong>{{ update.timestamp.strftime('%H:%M') }}</strong> {{ update.headline }} -- {{ update.author}}</li>
+        {% endfor %}</ul>
+
+        <h1>Add an update</h1>
+        <label>Headline</label>
+        <input id="update-headline" type="text">
+        <label>Author</label>
+        <input id="update-author" type="text">
+        <label>Content</label>
+        <textarea id="update-content"></textarea>
+        <button id="update-button" class="btn btn-large btn-success">Save</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_foot %}
+    <script type="text/javascript">
+
+    	var UPDATE_BUTTON = $('#update-button');
+        var UPDATE_LIST = $('#update-list');
+    	
+        var UPDATE_HEADLINE = $('#update-headline');
+    	var UPDATE_AUTHOR = $('#update-author');
+    	var UPDATE_CONTENT = $('#update-content');
+
+
+    	// $('.delete-button').on('click', function(){
+    	// 	console.log($(this).attr('data-id'));
+    	// });
+
+        UPDATE_BUTTON.on('click', function(){
+	    	var update_headline = UPDATE_HEADLINE.attr('value');
+	    	var update_author = UPDATE_AUTHOR.attr('value');
+	    	var update_content = UPDATE_CONTENT.attr('value');
+
+            // POST!
+            buttonPOST({
+                post_target: 'update/',
+                post_data: {
+                    headline: update_headline,
+                    author: update_author,
+                    content: update_content
+                }
+            });
+        });
+
+        // A sort of generic function to read options and handle changing button state and POSTing to an URL.
+        function buttonPOST(options){
+
+            // POST some data.
+            $.post(options.post_target, options.post_data, function(e){
+                UPDATE_HEADLINE.attr('value');
+                UPDATE_AUTHOR.attr('value');
+                UPDATE_CONTENT.attr('value');
+                console.log(e);
+            	// UPDATE_LIST.append(list_item);
+            });
+        }
+    </script>
+{% endblock %}

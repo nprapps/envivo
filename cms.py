@@ -4,10 +4,9 @@ import datetime
 import json
 import os
 
-from flask import Flask
-from flask import render_template, request
-from mongoengine import connect
 from bson.objectid import ObjectId
+from flask import Flask, render_template, request
+from mongoengine import connect
 
 from models import LiveBlog, LiveBlogUpdate
 
@@ -21,14 +20,12 @@ connect('apps', username=os.environ['APPS_USER'], password=os.environ['APPS_PASS
 def live_blog_list(live_blog_id=None, form_type=None):
 
 	now = datetime.datetime.utcnow()
-
 	if request.method == 'GET':
 		if live_blog_id == None:
 
 			context = {
 				'blogs': LiveBlog.objects 
 			}
-
 			return render_template('blog_list.html', **context)
 
 		else:

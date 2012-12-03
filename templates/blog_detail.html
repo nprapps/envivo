@@ -9,7 +9,8 @@
 {% block content %}
 <div class="row-fluid">
     <div class="span12">
-        <h1>{{ blog.name }}</h1>
+        <p><a href="../"><< Back to list</a> | <a href="http://127.0.0.1:5002/live-blog/{{ blog.id.__str__() }}/">JSON</a></p>
+        <h1>{{ blog.name }} </h1>
         <p>{{ blog.description }}</p>
         <h4>Updates</h4>
         <ul id="update-list">{% for update in blog.updates_sorted %}

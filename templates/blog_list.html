@@ -12,22 +12,18 @@
 
         <table id="blog-table" class="table table-striped table-bordered table-hover table-condensed">
         <tr class="info">
-        	<td><strong>Link</strong></td>
             <td><strong>Name</strong></td>
             <td><strong>Description</strong></td>
             <td><strong>Updates count</strong></td>
             <td><strong>Active</strong></td>
-            <td><strong>Save</strong></td>
             <td><strong>Delete</strong></td>
         </tr>
         {% for blog in blogs %}
         <tr>
-        	<td><a class='btn btn-mini btn-primary' href="/live-blog/{{ blog.id.__str__() }}/">Updates</a></td>
-        	<td><input type="text" value="{{ blog.name }}"></td>
-        	<td><textarea>{{ blog.description }}</textarea></td>
+        	<td><a href="/live-blog/{{ blog.id.__str__() }}/">{{ blog.name }}</a></td>
+        	<td>{{ blog.description }}</td>
         	<td>{{ blog.updates_count }}</td>
-        	<td><input type="checkbox"{{ blog.active_label }}></td>
-        	<td><button class="btn btn-success btn-mini save-button" data-id="{{ blog.id.__str__() }}">Save</button></td>
+        	<td>{{ blog.active_label }}</td>
         	<td><button class="btn btn-danger btn-mini delete-button" data-id="{{ blog.id.__str__() }}">Delete</button></td>
         </tr>
         {% endfor %}

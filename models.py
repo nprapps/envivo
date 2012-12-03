@@ -31,6 +31,6 @@ class LiveBlog(Document):
 	@property
 	def active_label(self):
 		if self.active == True:
-			return ' checked="checked"'
+			return 'true'
 
-		return ""
+		return 'false'
